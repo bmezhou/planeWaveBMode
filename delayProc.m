@@ -1,4 +1,4 @@
-function [arrayData1, arrayData2] = delayProc(RF, tTot)
+function [arrayData1, arrayData2, apeSizeLine] = delayProc(RF, tTot)
 % tTot = 76;
 % alpha = 0;
 
@@ -15,6 +15,8 @@ arrayData1 = zeros(m, 255);
 arrayData2 = zeros(m, 255);
 
 deltaZ = sapSpac;
+
+apeSizeLine = zeros(1, 1791);
 
 parfor i = 0: 254
 %     disp(i);
@@ -36,6 +38,10 @@ parfor i = 0: 254
 %         end
 %         apeSize = 36;
         
+%         if i == 1
+%             apeSizeLine(j) = apeSize;
+%         end
+
         steerData = zeros(apeSize * 2 + 1, 1);
         
         kBgn = 1;
@@ -76,8 +82,7 @@ parfor i = 0: 254
         end
 %         figure;
 %         plot(steerData); %hold on
-%         
-%         
+
 
         arrayData1(j, i + 1) = steerData' * hanning(apeSize * 2 + 1);
         

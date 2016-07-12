@@ -51,7 +51,7 @@ c     = 1540;
     
 %     alpha = alphaT(round((j-87)/2) + 1);
 
-    [bfDas1, bfDas2] = delayProc(RF, 73);  % -42
+    [bfDas1, bfDas2, apeSize] = delayProc(RF, 73);  % -42
 %     bfDas2 = delayProc(RF, 73);  % -42
 %     bfDas = Copy_of_delayProc(RF, -42, alpha);
     
@@ -71,16 +71,16 @@ c     = 1540;
     figure;
     image(logEnvIntp1);
     colormap(gray(256));
-    axis('image');
-    ylim([0, 350]);
+%     axis('image');
+    ylim([0, 1800]);
     
     figure;
     image(logEnvIntp2);
     colormap(gray(256));
-    axis('image');
-    ylim([0, 350]);
+%     axis('image');
+    ylim([0, 1800]);
     
     figure;
-    plot(logEnvIntp1(265, :));
+    plot(logEnvIntp1(:, 150));
     hold on
-    plot(logEnvIntp2(265, :) + 47, 'r');
+    plot(logEnvIntp2(:, 150) + 47, 'r');
